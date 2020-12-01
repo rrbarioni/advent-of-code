@@ -16,16 +16,16 @@ def solve_part2(entries):
     Given a list of integer values, what is the product of the three values 
         whose sum is equal to 2020?
     '''
+    d = { e: None for e in entries }
+
     for i in range(len(entries)):
         e_i = entries[i]
         for j in range(i+1, len(entries)):
             e_j = entries[j]
-            for k in range(j+1, len(entries)):
-                e_k = entries[k]
-                if (e_i + e_j + e_k == 2020):
-                    prod = e_i * e_j * e_k
+            if (2020 - e_i - e_j) in d:
+                prod = e_i * e_j * (2020 - e_i - e_j)
 
-                    return prod
+                return prod
 
 if __name__ == '__main__':
     entries = list(open('inputs/day1.txt'))
