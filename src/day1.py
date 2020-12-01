@@ -3,14 +3,13 @@ def solve_part1(entries):
     Given a list of integer values, what is the product of the two values whose
         sum is equal to 2020?
     '''
-    for i in range(len(entries)):
-        e_i = entries[i]
-        for j in range(i+1, len(entries)):
-            e_j = entries[j]
-            if (e_i + e_j == 2020):
-                prod = e_i * e_j
+    d = { e: None for e in entries }
 
-                return prod
+    for e in entries:
+        if (2020 - e) in entries:
+            prod = e * (2020 - e)
+
+            return prod
 
 def solve_part2(entries):
     '''
