@@ -28,7 +28,8 @@ def solve_part2(entries):
                 return prod
 
 if __name__ == '__main__':
-    entries = list(open('inputs/day1.txt'))
+    entries = open('inputs/day1.txt')
+    entries = entries.readlines()
     entries = [int(e) for e in entries]
 
     print('part 1: %s' % solve_part1(entries))
