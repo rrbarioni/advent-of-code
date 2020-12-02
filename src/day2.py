@@ -23,7 +23,7 @@ def solve_part2(entries):
     '''
     Given a list of (string, char, index 1, index 2), how many string contain
         the char in only one of the indexes? (considering that the index starts
-        at 1)
+        at 1)?
     '''
     n_valid = 0
 
