@@ -8,7 +8,7 @@ def solve_part1(entries):
     d = { e: None for e in entries }
 
     for e in entries:
-        if (2020 - e) in entries:
+        if (2020 - e) in d:
             prod = e * (2020 - e)
 
             return prod
