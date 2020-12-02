@@ -4,14 +4,22 @@ def solve_part1(entries):
         sum is equal to 2020?
     '''
     entries = [int(e) for e in entries]
+
+    n = 2020
     
-    d = { e: None for e in entries }
+    d = {}
+    for e in entries:
+        if e not in d:
+            d[e] = 1
+        else:
+            d[e] += 1
 
     for e in entries:
-        if (2020 - e) in d:
-            prod = e * (2020 - e)
+        if (n - e) in d:
+            if (e != (n - e)) or d[e] > 1:
+                prod = e * (n - e)
 
-            return prod
+                return prod
 
 def solve_part2(entries):
     '''
@@ -20,7 +28,12 @@ def solve_part2(entries):
     '''
     entries = [int(e) for e in entries]
 
-    d = { e: None for e in entries }
+    d = {}
+    for e in entries:
+        if e not in d:
+            d[e] = 1
+        else:
+            d[e] += 1
 
     for i in range(len(entries)):
         e_i = entries[i]
