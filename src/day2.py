@@ -6,6 +6,7 @@ def solve_part1(entries):
     n_valid = 0
 
     for e in entries:
+        # entry is in the format "2-6 c: fcpwjqhcgtffzlbj"
         expected_count, c, password = e.split(' ')
         min_count, max_count = expected_count.split('-')
         min_count = int(min_count)
@@ -28,6 +29,7 @@ def solve_part2(entries):
     n_valid = 0
 
     for e in entries:
+        # entry is in the format "2-6 c: fcpwjqhcgtffzlbj"
         expected_indexes, c, password = e.split(' ')
         index_i, index_j = expected_indexes.split('-')
         index_i = int(index_i) - 1
@@ -47,8 +49,7 @@ def solve_part2(entries):
     return n_valid
 
 if __name__ == '__main__':
-    entries = open('inputs/day2.txt')
-    entries = entries.readlines()
+    entries = open('inputs/day2.txt').readlines()
 
     print('part 1: %s' % solve_part1(entries))
     print('part 2: %s' % solve_part2(entries))
