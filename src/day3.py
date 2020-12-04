@@ -1,4 +1,6 @@
 def solve_part1(entries):
+    entries = [e.rstrip() for e in entries]
+
     w = len(entries[0])
     h = len(entries)
 
@@ -7,6 +9,8 @@ def solve_part1(entries):
     return n_trees
 
 def solve_part2(entries):
+    entries = [e.rstrip() for e in entries]
+    
     w = len(entries[0])
     h = len(entries)
 
@@ -21,7 +25,6 @@ def solve_part2(entries):
 
 if __name__ == '__main__':
     entries = open('inputs/day3.txt').readlines()
-    entries = [e.rstrip() for e in entries]
 
     print('part1: %s' % solve_part1(entries))
     print('part2: %s' % solve_part2(entries))
