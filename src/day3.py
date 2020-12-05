@@ -26,5 +26,5 @@ def solve_part2(entries):
 if __name__ == '__main__':
     entries = open('inputs/day3.txt').readlines()
 
-    print('part1: %s' % solve_part1(entries))
-    print('part2: %s' % solve_part2(entries))
+    print('part 1: %s' % solve_part1(entries))
+    print('part 2: %s' % solve_part2(entries))
