@@ -4,8 +4,7 @@ def solve_part1(entries):
     max_id = 0
 
     for e in entries:
-        e = e.replace('F', '0').replace('B', '1').replace('L', '0').replace(
-            'R', '1')
+        e = e.translate(str.maketrans({'F': '0', 'B': '1', 'L': '0', 'R': '1'}))
         curr_id = int(e, 2)
 
         max_id = max(max_id, curr_id)
@@ -20,8 +19,7 @@ def solve_part2(entries):
     max_id = 0
 
     for e in entries:
-        e = e.replace('F', '0').replace('B', '1').replace('L', '0').replace(
-            'R', '1')
+        e = e.translate(str.maketrans({'F': '0', 'B': '1', 'L': '0', 'R': '1'}))
         curr_id = int(e, 2)
 
         ids[curr_id] = None
