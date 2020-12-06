@@ -4,15 +4,9 @@ def solve_part1(entries):
     max_id = 0
 
     for e in entries:
-        r_s, c_s = e[:7], e[7:]
-
-        r_s = r_s.replace('F', '0').replace('B', '1')
-        c_s = c_s.replace('L', '0').replace('R', '1')
-
-        r = int(r_s, 2)
-        c = int(c_s, 2)
-
-        curr_id = r * 8 + c
+        e = e.replace('F', '0').replace('B', '1').replace('L', '0').replace(
+            'R', '1')
+        curr_id = int(e, 2)
 
         max_id = max(max_id, curr_id)
 
@@ -26,15 +20,9 @@ def solve_part2(entries):
     max_id = 0
 
     for e in entries:
-        r_s, c_s = e[:7], e[7:]
-
-        r_s = r_s.replace('F', '0').replace('B', '1')
-        c_s = c_s.replace('L', '0').replace('R', '1')
-
-        r = int(r_s, 2)
-        c = int(c_s, 2)
-
-        curr_id = r * 8 + c
+        e = e.replace('F', '0').replace('B', '1').replace('L', '0').replace(
+            'R', '1')
+        curr_id = int(e, 2)
 
         ids[curr_id] = None
 
