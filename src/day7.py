@@ -27,8 +27,9 @@ def solve_part1(entries):
             visited.add(h)
             stack.extend(adj_list[h] - visited)
 
-            if h != start:
-                n_holders += 1
+            n_holders += 1
+
+    n_holders -= 1
 
     return n_holders
 
