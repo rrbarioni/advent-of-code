@@ -18,18 +18,11 @@ def solve_part2(entries):
     s = set(entries)
     s.add(0)
 
-    graph = {}
-    for a in s:
-        graph[a] = []
-        for n in range(1,4):
-            if a + n in s:
-                graph[a].append(a + n)
+    neigh = [len([n for n in [1,2,3] if a + n in s]) for a in s][:-1]
+    neigh = ''.join([str(l) for l in neigh]).split('1')
 
-    d_split = [len(x) for x in graph.values()][:-1]
-    d_split = ''.join([str(l) for l in d_split]).split('1')
-    d_split = [[int(v) for v in l] for l in d_split if len(l) > 0]
-
-    mults = [sum(d) - 1 if len(d) > 1 else d[0] for d in d_split]
+    neigh = [[int(v) for v in l] for l in neigh if len(l) > 0]
+    mults = [sum(n) - 1 if len(n) > 1 else n[0] for n in neigh]
 
     mult = 1
     for m in mults:
