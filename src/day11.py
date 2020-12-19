@@ -44,22 +44,23 @@ def solve_part2(entries):
 
     while True:
         changed = False
-        prev_entries = [row[:] for row in entries[:]]
+        changes_list = []
 
-        for row_i, row in enumerate(prev_entries):
+        for row_i, row in enumerate(entries):
             for seat_i, seat in enumerate(row):
                 adj_seats = []
 
                 nav_list = [(-1, 0), (-1, 1), (0, 1), (1, 1), (1, 0), (1, -1),
                     (0, -1), (-1, -1)]
-                for row_nav, seat_nav in nav_list:
-                    point_row_i = row_i
-                    point_seat_i = seat_i
+                for (row_nav, seat_nav) in nav_list:
+                    point_row_i = row_i + row_nav
+                    point_seat_i = seat_i + seat_nav
 
-                    while point_row_i > 0 and point_row_i < (n_rows - 1) and \
-                        point_seat_i > 0 and point_seat_i < (n_seats - 1):
+                    while point_row_i >= 0 and point_row_i <= (n_rows - 1) and \
+                        point_seat_i >= 0 and point_seat_i <= (n_seats - 1):
 
-                        point_seat = prev_entries[point_row_i][point_seat_i]
+                        point_seat = entries[point_row_i][point_seat_i]
+
                         if point_seat != '.':
                             adj_seats.append(point_seat)
                             break
@@ -69,23 +70,24 @@ def solve_part2(entries):
 
                 adj_occupied = adj_seats.count('#')
                 if seat == 'L' and adj_occupied == 0:
-                    entries[row_i][seat_i] = '#'
+                    changes_list.append((row_i, seat_i, '#'))
                     changed = True
                 elif seat == '#' and adj_occupied >= 5:
-                    entries[row_i][seat_i] = 'L'
+                    changes_list.append((row_i, seat_i, 'L'))
                     changed = True
+
+        for row_i, seat_i, value in changes_list:
+            entries[row_i][seat_i] = value
 
         if not changed:
             break
 
     total_occupied = sum([row.count('#') for row in entries])
-    print(total_occupied)
 
     return total_occupied
 
 if __name__ == '__main__':
-    entries = open('inputs/day11_2.txt').readlines()
+    entries = open('inputs/day11.txt').readlines()
 
-    # solve_part2(entries)
     print('part 1: %s' % solve_part1(entries))
-    # print('part 2: %s' % solve_part2(entries))
+    print('part 2: %s' % solve_part2(entries))
